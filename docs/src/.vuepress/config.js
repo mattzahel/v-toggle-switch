@@ -41,6 +41,10 @@ module.exports = {
 				text: 'Customization',
 				link: '/customization/',
 			},
+			{
+				text: 'Examples',
+				link: '/examples/',
+			},
 		],
 		sidebar: {
 			'/customization/': [

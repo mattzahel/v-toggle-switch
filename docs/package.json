@@ -1,0 +1,21 @@
+{
+  "name": "v-toggle-switch",
+  "version": "0.0.1",
+  "description": "Simple, yet configurable toggle switch component with accessibility out of the box!",
+  "main": "index.js",
+  "authors": {
+    "name": "Matthew",
+    "email": "mattzahel@gmail.com"
+  },
+  "repository": "https://github.com/mattzahel/v-toggle-switch/v-toggle-switch",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.0",
+    "vuepress": "^1.5.3"
+  }
+}

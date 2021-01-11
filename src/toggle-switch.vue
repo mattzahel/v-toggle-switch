@@ -1,20 +1,24 @@
 <template>
 	<label
-		for="toggle"
+		:for="`toggle-switch-${uuid}`"
 		class="toggle-switch"
 		:class="{ 'toggle-switch--checked': isChecked }"
 		tabindex="-1"
 		@click.prevent="toggleState"
 	>
 		<button
-			id="toggle"
+			:id="`toggle-switch-${uuid}`"
 			tabindex="0"
 			type="button"
 			role="switch"
-			:aria-checked="ariaChecked"
 			class="toggle-switch__button"
 			:class="additionalClasses"
 			:style="buttonStyles"
+			v-bind="{
+				disabled,
+				'aria-checked': ariaChecked,
+				'aria-disabled': disabled,
+			}"
 		>
 			<div class="toggle-switch__labels">
 				<span v-if="isChecked">
@@ -31,6 +35,8 @@
 </template>
 
 <script>
+let uuid = 0
+
 export default {
 	name: 'ToggleSwitch',
 
@@ -63,6 +69,10 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+		outlineOff: {
+			type: Boolean,
+			default: false,
+		},
 	},
 
 	data() {
@@ -77,6 +87,7 @@ export default {
 			const classToParams = {
 				disabled: 'disabled',
 				outline: 'outline',
+				outlineOff: 'non-accessible',
 			}
 
 			for (let param in classToParams) {
@@ -103,10 +114,23 @@ export default {
 		},
 	},
 
+	watch: {
+		value(newVal) {
+			this.isChecked = newVal
+		},
+	},
+
+	beforeCreate() {
+		this.uuid = uuid.toString()
+		uuid += 1
+	},
+
 	methods: {
 		toggleState() {
-			this.isChecked = !this.isChecked
-			this.$emit('toggle', this.isChecked)
+			if (!this.disabled) {
+				this.isChecked = !this.isChecked
+				this.$emit('toggle', this.isChecked)
+			}
 		},
 	},
 }
@@ -132,6 +156,7 @@ export default {
 		border-radius: 50%;
 		background-color: #fff;
 	}
+
 	&__label {
 		margin-left: 10px;
 	}
@@ -165,6 +190,13 @@ export default {
 				height: calc(var(--height) - var(--padding) * 2);
 				background-color: var(--color-off);
 			}
+		}
+		&--non-accessible {
+			outline: none;
+		}
+		&--disabled {
+			pointer-events: none;
+			opacity: 0.5;
 		}
 	}
 

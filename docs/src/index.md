@@ -12,5 +12,5 @@ features:
     - title: Pretty
       details: Minimalistic look
 
-footer: Made by Matthew Zahel with ❤️
+footer: Made by Mateusz Zahel with ❤️
 ---

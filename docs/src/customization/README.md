@@ -30,6 +30,13 @@ Button height in px
 -   Type: `boolean`
 -   Default: `false`
 
+### outlineOff
+
+Disables default focus outline. Not recommended!
+
+-   Type: `boolean`
+-   Default: `false`
+
 ## Component Styles
 
 ### Default

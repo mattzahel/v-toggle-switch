@@ -1,21 +1,16 @@
 <template>
 	<div id="app">
 		<h1>Demo</h1>
-		<toggle-switch :value="value1" @toggle="onToggle"></toggle-switch>
-		<toggle-switch outline :value="value2" @toggle="onToggle"></toggle-switch>
-
-		<toggle-switch outline :value="value2" @toggle="onToggle">
-			This is an example label
+		<toggle-switch v-model="value1" accessibility-off @toggle="onToggle">
+			This is example label
 		</toggle-switch>
-
-		<toggle-switch :value="value3" v-bind="{ height: 36, width: 92 }" @toggle="onToggle">
-			<template #label-off>off</template>
-			<template #label-on>on</template>
+		<toggle-switch v-model="value2" outline @toggle="onToggle">
+			This is another label
 		</toggle-switch>
 		<toggle-switch
-			outline
-			:value="value4"
-			v-bind="{ height: 36, width: 96 }"
+			disabled
+			:value="value3"
+			v-bind="{ width: 64, height: 28 }"
 			@toggle="onToggle"
 		>
 			<template #label-off>off</template>
@@ -38,7 +33,6 @@ export default Vue.extend({
 			value1: false,
 			value2: false,
 			value3: false,
-			value4: false,
 		}
 	},
 	methods: {

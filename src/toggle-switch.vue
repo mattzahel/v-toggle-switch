@@ -1,5 +1,6 @@
 <template>
 	<label
+		:id="`toggle-switch-label-${uuid}`"
 		:for="`toggle-switch-${uuid}`"
 		class="toggle-switch"
 		:class="{ 'toggle-switch--checked': isChecked }"
@@ -18,6 +19,7 @@
 				disabled,
 				'aria-checked': ariaChecked,
 				'aria-disabled': disabled,
+				'aria-labelledby': `toggle-switch-label-${uuid}`,
 			}"
 		>
 			<div class="toggle-switch__labels">
@@ -53,6 +55,18 @@ export default {
 			type: String,
 			default: null,
 		},
+		colorOn: {
+			type: String,
+			default: '#0178D6',
+		},
+		colorOff: {
+			type: String,
+			default: '#C4C4C4',
+		},
+		colorText: {
+			type: String,
+			default: '#FFF',
+		},
 		width: {
 			type: Number,
 			default: 50,
@@ -65,13 +79,18 @@ export default {
 			type: Boolean,
 			default: false,
 		},
-		outline: {
+		speed: {
+			type: Number,
+			default: 200,
+		},
+		noOutline: {
 			type: Boolean,
 			default: false,
 		},
-		outlineOff: {
-			type: Boolean,
-			default: false,
+		buttonStyle: {
+			type: String,
+			default: null,
+			validator: value => ['outline', 'slider'].includes(value),
 		},
 	},
 
@@ -86,8 +105,8 @@ export default {
 			const classes = []
 			const classToParams = {
 				disabled: 'disabled',
-				outline: 'outline',
-				outlineOff: 'non-accessible',
+				buttonStyle: this.buttonStyle,
+				noOutline: 'no-outline',
 			}
 
 			for (let param in classToParams) {
@@ -103,13 +122,14 @@ export default {
 		},
 		buttonStyles() {
 			return {
-				'--color-off': '#c4c4c4',
-				'--color-on': '#0178d6',
-				'--color-text': '#fff',
-				'--width': this.width + 'px',
-				'--height': this.height + 'px',
-				'--padding': this.height * 0.25 + 'px',
-				'--distance': this.width - this.height + 'px',
+				'--color-on': this.colorOn,
+				'--color-off': this.colorOff,
+				'--color-text': this.colorText,
+				'--width': `${this.width}px`,
+				'--height': `${this.height}px`,
+				'--padding': `${this.height * 0.25}px`,
+				'--distance': `${this.width - this.height}px`,
+				'--speed': `${this.speed}ms`,
 			}
 		},
 	},
@@ -150,8 +170,8 @@ export default {
 		position: absolute;
 		top: 50%;
 		left: calc(var(--padding) / 2);
-		transition: all 200ms ease;
-		transition-property: transform, background-color;
+		transition: all var(--speed) ease;
+		transition-property: transform, background-color, box-shadow;
 		transform: translateY(-50%);
 		border-radius: 50%;
 		background-color: #fff;
@@ -174,7 +194,7 @@ export default {
 		position: relative;
 		color: var(--color-text);
 		cursor: pointer;
-		transition: all 200ms ease;
+		transition: all var(--speed) ease;
 		transition-property: background-color, border;
 		border: 0;
 		border-radius: calc((var(--height) - var(--padding)));
@@ -191,7 +211,29 @@ export default {
 				background-color: var(--color-off);
 			}
 		}
-		&--non-accessible {
+		&--slider {
+			background-color: transparent;
+
+			&::before {
+				content: '';
+				width: calc(100% - var(--padding) * 2);
+				height: 25%;
+				position: absolute;
+				top: 50%;
+				left: var(--padding);
+				transition: background-color var(--speed) ease;
+				transform: translateY(-50%);
+				border-radius: 1rem;
+				background-color: var(--color-off);
+			}
+			#{$self}__toggle {
+				box-shadow: 1px 0 6px rgba(0, 0, 0, 0.3);
+			}
+			#{$self}__labels {
+				display: none;
+			}
+		}
+		&--no-outline {
 			outline: none;
 		}
 		&--disabled {
@@ -216,6 +258,17 @@ export default {
 			}
 			#{$self}__labels {
 				color: var(--color-on);
+			}
+		}
+		#{$self}__button--slider {
+			background-color: transparent;
+
+			&::before {
+				background-color: var(--color-on);
+			}
+			#{$self}__toggle {
+				background-color: var(--color-on);
+				box-shadow: -1px 0 6px rgba(0, 0, 0, 0.3);
 			}
 		}
 		#{$self}__toggle {

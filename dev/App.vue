@@ -1,21 +1,35 @@
 <template>
-	<div id="app">
-		<h1>Demo</h1>
-		<toggle-switch v-model="value1" accessibility-off @toggle="onToggle">
-			This is example label
-		</toggle-switch>
-		<toggle-switch v-model="value2" outline @toggle="onToggle">
-			This is another label
-		</toggle-switch>
-		<toggle-switch
-			disabled
-			:value="value3"
-			v-bind="{ width: 64, height: 28 }"
-			@toggle="onToggle"
-		>
-			<template #label-off>off</template>
-			<template #label-on>on</template>
-		</toggle-switch>
+	<div id="app" class="app">
+		<h1>Examples</h1>
+		<div class="app__switches">
+			<toggle-switch v-model="value1" @toggle="onToggle">
+				This is example toggle-switch button
+			</toggle-switch>
+			<toggle-switch
+				v-model="value2"
+				button-style="outline"
+				v-bind="{ colorOff: '#444', colorOn: 'green' }"
+				@toggle="onToggle"
+			>
+				This is "outline" style button
+			</toggle-switch>
+			<toggle-switch :value="value3" v-bind="config" @toggle="onToggle">
+				This is "switch" style button
+			</toggle-switch>
+			<toggle-switch :value="value3" disabled @toggle="onToggle"
+				>This is disabled button</toggle-switch
+			>
+			<toggle-switch width="64" height="28" @toggle="onToggle">
+				<template #label-off>off</template>
+				<template #label-on>on</template>
+				This is label for button with state labels
+			</toggle-switch>
+			<toggle-switch width="64" height="28" button-style="outline" @toggle="onToggle">
+				<template #label-off>off</template>
+				<template #label-on>on</template>
+				And this is label for outline button with state labels
+			</toggle-switch>
+		</div>
 	</div>
 </template>
 
@@ -33,6 +47,12 @@ export default Vue.extend({
 			value1: false,
 			value2: false,
 			value3: false,
+
+			config: {
+				speed: 300,
+				outlineOff: true,
+				buttonStyle: 'slider',
+			},
 		}
 	},
 	methods: {
@@ -44,11 +64,17 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-#app {
+.app {
 	font-family: sans-serif;
 	padding: 3rem;
-	display: grid;
-	grid-template-rows: 1fr;
-	grid-row-gap: 1rem;
+
+	&__switches {
+		display: inline-flex;
+		flex-direction: column;
+
+		label {
+			margin: 10px 0;
+		}
+	}
 }
 </style>

@@ -7,11 +7,11 @@ It works nice with Vue 2.
 
 <Basic/>
 
-## Installation
+## Install
 
 Use `npm install v-toggle-switch` or `yarn add v-toggle-switch`
 
-### Register component
+### Import
 
 -   locally
 
@@ -43,10 +43,10 @@ Vue.use(ToggleSwitch)
 
 <Basic v-bind="{ state: false }"/>
 
-### Passing the value and listening
+### Passing the value and binding toggle event
 
 ```
-<toggle-switch v-bind="{ value: myValue }" @toggle="onToggle"></toggle-switch>
+<toggle-switch :value="myValue" @toggle="onToggle" />
 ```
 
 <Basic />
@@ -66,7 +66,7 @@ Vue.use(ToggleSwitch)
 ### Choosing a different style
 
 ```
-<toggle-switch outline></toggle-switch>
+<toggle-switch button-style="outline" />
 ```
 
 <Outline/>

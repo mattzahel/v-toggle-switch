@@ -1,12 +1,13 @@
 {
   "name": "v-toggle-switch",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple, yet configurable toggle switch component with accessibility out of the box!",
   "author": "Mateusz Zahel",
   "repository": {
   "type" : "git",
   "url" : "https://github.com/mattzahel/v-toggle-switch"
   },
+  "homepage": "https://v-toggle-switch.netlify.app",
   "license": "MIT",
   "main": "dist/toggle-switch.ssr.js",
   "browser": "dist/toggle-switch.esm.js",

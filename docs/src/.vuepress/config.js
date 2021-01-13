@@ -38,27 +38,38 @@ module.exports = {
 				link: '/guide/',
 			},
 			{
-				text: 'Customization',
-				link: '/customization/',
-			},
-			{
 				text: 'Examples',
 				link: '/examples/',
 			},
 		],
-		sidebar: {
-			'/customization/': [
-				{
-					title: 'Customization',
-					collapsable: false,
-					children: ['', 'using-vue'],
-				},
-			],
-		},
+		sidebar: [
+			{
+				title: 'Guide',
+				link: '/guide/',
+				collapsable: false,
+				children: ['/guide/installation', '/guide/usage', '/guide/customization'],
+			},
+			{
+				title: 'Examples',
+				link: '/examples/',
+				collapsable: false,
+				children: ['/examples/'],
+			},
+		],
 	},
 
 	/**
 	 * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
 	 */
-	plugins: ['@vuepress/plugin-back-to-top', '@vuepress/plugin-medium-zoom'],
+	plugins: [
+		'@vuepress/plugin-back-to-top',
+		'@vuepress/plugin-medium-zoom',
+		'vuepress-plugin-smooth-scroll',
+		'vuepress-plugin-clean-urls',
+		{
+			normalSuffix: '/',
+			indexSuffix: '/',
+			notFoundPath: '/404.html',
+		},
+	],
 }

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<toggle-switch v-bind="{ width: 64, height: 24 }">
+		<toggle-switch v-bind="{ width: 64, height: 28 }">
 			<template v-slot:label-off>Off</template>
 			<template v-slot:label-on>On</template>
 			This is an example main label

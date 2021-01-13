@@ -1,25 +1,32 @@
 <template>
-	<div id="app">
-		<toggle-switch :value="value1" @toggle="onToggle"></toggle-switch>
-		<toggle-switch outline :value="value2" @toggle="onToggle"></toggle-switch>
-
-		<toggle-switch outline :value="value2" @toggle="onToggle">
-			This is an example label
-		</toggle-switch>
-
-		<toggle-switch :value="value3" v-bind="{ height: 36, width: 92 }" @toggle="onToggle">
-			<template #label-off>off</template>
-			<template #label-on>on</template>
-		</toggle-switch>
-		<toggle-switch
-			outline
-			:value="value4"
-			v-bind="{ height: 36, width: 96 }"
-			@toggle="onToggle"
-		>
-			<template #label-off>off</template>
-			<template #label-on>on</template>
-		</toggle-switch>
+		<div class="example">
+			<toggle-switch @toggle="onToggle">
+				Example toggle-switch button
+			</toggle-switch>
+			<toggle-switch
+				button-style="outline"
+				v-bind="{ colorOff: '#444', colorOn: 'green' }"
+				@toggle="onToggle"
+			>
+				Example "outline" style button
+			</toggle-switch>
+			<toggle-switch v-bind="config" @toggle="onToggle">
+				Example "switch" style button
+			</toggle-switch>
+			<toggle-switch disabled @toggle="onToggle"
+				>Disabled button</toggle-switch
+			>
+			<toggle-switch width="64" height="28" color-off='#444' color-on="orange" @toggle="onToggle">
+				<template #label-off>off</template>
+				<template #label-on>on</template>
+				Label for button with state labels
+			</toggle-switch>
+			<toggle-switch v-bind="{ width: 64, height: 28, buttonStyle: 'outline'}" @toggle="onToggle">
+				<template #label-off>off</template>
+				<template #label-on>on</template>
+				Label for outline button with state labels
+			</toggle-switch>
+		</div>
 	</div>
 </template>
 
@@ -34,10 +41,11 @@ export default Vue.extend({
 	},
 	data() {
 		return {
-			value1: false,
-			value2: false,
-			value3: false,
-			value4: false,
+			config: {
+				speed: 300,
+				outlineDisabled: true,
+				buttonStyle: 'slider',
+			},
 		}
 	},
 	methods: {
@@ -49,10 +57,12 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-#app {
-	font-family: sans-serif;
-	display: grid;
-	grid-template-rows: 1fr;
-	grid-row-gap: 1rem;
+.example {
+	display: inline-flex;
+	flex-direction: column;
+
+	label {
+		margin: 10px 0;
+	}
 }
 </style>

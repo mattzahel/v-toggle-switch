@@ -6,11 +6,11 @@ actionText: Quick Start →
 actionLink: /guide/
 features:
     - title: Customizable
-      details: Many options to customize your toggle
+      details: Many options to customize your toggle switch button
     - title: Accessible
-      details: Works with keyboard and screen readers
+      details: Works well with keyboard and screen readers
     - title: Pretty
-      details: Minimalistic look
+      details: Minimalistic look with several themes available
 
 footer: Made by Mateusz Zahel with ❤️
 ---

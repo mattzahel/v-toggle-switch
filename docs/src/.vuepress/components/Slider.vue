@@ -1,6 +1,6 @@
 <template>
 	<div class="basic">
-		<toggle-switch button-style="outline" :value="value1" @toggle="onToggle"></toggle-switch>
+		<toggle-switch button-style="slider" :value="value1" @toggle="onToggle" />
 	</div>
 </template>
 

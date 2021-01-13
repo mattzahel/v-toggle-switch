@@ -1,4 +1,6 @@
-## Customization
+# Customization
+
+## Properties
 
 ### value
 
@@ -45,7 +47,7 @@ Disables default focus outline. Not recommended!
 -   Type: `boolean`
 -   Default: `false`
 
-## Component Styles
+## Styles
 
 ### buttonStyle
 

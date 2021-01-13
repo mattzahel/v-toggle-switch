@@ -1,5 +1,7 @@
 # Installation
 
+## Install
+
 Use `npm install v-toggle-switch` or `yarn add v-toggle-switch`
 
 ## Import

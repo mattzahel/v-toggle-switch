@@ -47,14 +47,6 @@ export default {
 			type: Boolean,
 			default: false,
 		},
-		labelOn: {
-			type: String,
-			default: null,
-		},
-		labelOff: {
-			type: String,
-			default: null,
-		},
 		colorOn: {
 			type: String,
 			default: '#0178D6',
@@ -83,7 +75,7 @@ export default {
 			type: Number,
 			default: 200,
 		},
-		noOutline: {
+		outlineDisabled: {
 			type: Boolean,
 			default: false,
 		},
@@ -106,7 +98,7 @@ export default {
 			const classToParams = {
 				disabled: 'disabled',
 				buttonStyle: this.buttonStyle,
-				noOutline: 'no-outline',
+				outlineDisabled: 'no-outline',
 			}
 
 			for (let param in classToParams) {

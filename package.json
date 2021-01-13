@@ -1,6 +1,6 @@
 {
   "name": "v-toggle-switch",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Simple, yet configurable toggle switch component with accessibility out of the box!",
   "author": "Mateusz Zahel",
   "repository": {

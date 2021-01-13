@@ -50,7 +50,7 @@ export default Vue.extend({
 
 			config: {
 				speed: 300,
-				outlineOff: true,
+				outlineDisabled: true,
 				buttonStyle: 'slider',
 			},
 		}

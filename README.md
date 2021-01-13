@@ -37,11 +37,7 @@ Vue.use(ToggleSwitch)
 ## Usage
 
 ```
-<toggle-switch v-bind="{ value: myValue}" @toggle="onToggle">
-	<template v-slot:label-off>Off</template>
-	<template v-slot:label-on>On</template>
-	This is an example main label
-</toggle-switch>
+<toggle-switch />
 ```
 
-Check out the [docs](https://v-toggle-switch.netlify.app/) for more configuration options
+Check out the [docs](https://v-toggle-switch.netlify.app/) for configuration options

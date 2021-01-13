@@ -9,31 +9,38 @@
 
 ### width
 
-Changes button width (in px)
+Button width in px
 
 -   Type: `number`
 -   Default: `50`
 
 ### height
 
-Changes button height (in px)
+Button height in px
 
 -   Type: `number`
 -   Default: `24`
 
 ### colorOff
 
-Changes main color when the button is not switched
+Main color when the button is not switched
 
 -   Type: `string`
 -   Default: `#C4C4C4`
 
 ### colorOn
 
-Changes main color when the button is switched
+Main color when the button is switched
 
 -   Type: `string`
 -   Default: `#0178D6`
+
+### speed
+
+Transition speed in ms
+
+-   Type: `number`
+-   Default: `200`
 
 ### disabled
 

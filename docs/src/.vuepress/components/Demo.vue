@@ -11,7 +11,7 @@
 				Example "outline" style button
 			</toggle-switch>
 			<toggle-switch v-bind="config" @toggle="onToggle">
-				Example "switch" style button
+				Example "slider" style button
 			</toggle-switch>
 			<toggle-switch disabled @toggle="onToggle"
 				>Disabled button</toggle-switch
